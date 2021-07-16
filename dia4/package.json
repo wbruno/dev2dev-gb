@@ -1,0 +1,23 @@
+{
+  "name": "dia2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "William Bruno <wbrunom@gmail.com> (http://wbruno.com.br/)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "2.945.0",
+    "fastify": "3.19.1",
+    "http-errors": "1.8.0"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "5.2.1",
+    "jest": "27.0.6",
+    "nodemon": "2.0.12"
+  }
+}

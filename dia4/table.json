@@ -1,0 +1,50 @@
+{
+    "TableName": "gb-product",
+    "AttributeDefinitions": [
+        { 
+            "AttributeName": "businessUnit#sku", 
+            "AttributeType": "S"
+        },
+        { 
+            "AttributeName": "businessUnit", 
+            "AttributeType": "S"
+        },
+        { 
+            "AttributeName": "sku", 
+            "AttributeType": "S"
+        }
+    ],
+    "KeySchema": [
+        { 
+            "AttributeName": "businessUnit#sku", 
+            "KeyType": "HASH"
+        }
+    ],
+    "ProvisionedThroughput": { 
+        "ReadCapacityUnits": 5, 
+        "WriteCapacityUnits": 1
+    },
+    "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "xie_businessUnit_sku",
+          "KeySchema": [
+            {
+              "AttributeName": "businessUnit",
+              "KeyType": "HASH"
+            },
+            {
+              "AttributeName": "sku",
+              "KeyType": "RANGE"
+            }
+          ],
+          "Projection": {
+            "ProjectionType": "ALL"
+          },
+          "ProvisionedThroughput": {
+            "ReadCapacityUnits": 5,
+            "WriteCapacityUnits": 1
+          }
+        }
+    ]
+  }
+  

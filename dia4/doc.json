@@ -1,0 +1,9 @@
+{
+    sku: '123',
+    name: 'Nina Secrets',
+    businessUnit: 'EUD',
+    'businessUnit#sku': 'EUD#123',
+    imageObject: {
+        large: 'http:.....png'
+    }
+}

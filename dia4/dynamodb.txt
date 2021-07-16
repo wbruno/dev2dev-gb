@@ -1,0 +1,69 @@
+Tiago Couto = arquiteto aws enterprise - IMERSAO DYNAMODB - 8h (2x 4h)
+
+
+IaaS - SaaS
+
+{
+    sku: '123',
+    name: 'Malbec 50ml',
+    businessUnit: 'BOT',
+    'businessUnit#sku': 'BOT#123',
+    imageObject: {
+        large: 'http:.....png'
+    }
+}
+
+TABELA principal
+{
+    sku: '123',
+    name: 'Nina Secrets',
+    businessUnit: 'EUD',
+    'businessUnit#sku': 'EUD#123',
+    imageObject: {
+        large: 'http:.....png'
+    }
+}
+
+TABELA agg
+{
+    count: 6,
+    businessUnit BOT
+}
+
+unidade leitura - 4k -- MUUUUITO barata 50
+unidade escrita - 4k -- mais caro       1
+
+
+- não tem NENHUMA operação de agregação - sum,avg,count
+
+dynamodb stream - outra table - gravando
+
+DAX - Dynamodb Acelerator
+
+
+Primario
+partitionKey - 'BOT#123'
+sortKey - '123'
+
+GSI1
+partitionKey - 'BOT'
+sortKey - '123'
+projection - name {name: 'Nina Secrets'}
+
+GSI2
+partitionKey - '123'
+sortKey - 'BOT'
+projection - imageObjects {imageObject: {large: 'http:.....png'}}
+
+.getItem() - Primaria
+
+.query({
+    Index: 'GSI1'
+})
+
+{
+    rcu: 200,
+    wcu: 1
+}
+
+< 10ms
